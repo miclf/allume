@@ -1,0 +1,12 @@
+{
+    "name": "miclf/allume",
+    "description": "A tool to quickly initialize Laravel projects",
+    "license": "CC0-1.0",
+    "authors": [
+        {
+            "name": "Michaël Lecerf",
+            "email": "michael@estsurinter.net"
+        }
+    ],
+    "minimum-stability": "stable"
+}
