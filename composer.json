@@ -1,6 +1,9 @@
 {
     "name": "miclf/allume",
     "description": "A tool to quickly initialize Laravel projects",
+    "require": {
+        "symfony/console": "~2.6"
+    },
     "license": "CC0-1.0",
     "authors": [
         {
