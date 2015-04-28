@@ -11,6 +11,8 @@ if (file_exists($composerAutoloader)) {
 
 $app = new Symfony\Component\Console\Application('Allume', '0.1');
 
+$app->add(new Miclf\Allume\LaravelCommand);
+
 $status = $app->run();
 
 exit($status);
