@@ -11,6 +11,11 @@
             "email": "michael@estsurinter.net"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Miclf\\Allume\\": "src/"
+        }
+    },
     "bin": ["bin/allume"],
     "minimum-stability": "stable"
 }
