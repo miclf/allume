@@ -1,0 +1,16 @@
+#!/usr/bin/env php
+<?php
+
+$composerAutoloader = __DIR__.'/../../../autoload.php';
+
+if (file_exists($composerAutoloader)) {
+    require $composerAutoloader;
+} else {
+    require __DIR__.'/../vendor/autoload.php';
+}
+
+$app = new Symfony\Component\Console\Application('Allume', '0.1');
+
+$status = $app->run();
+
+exit($status);

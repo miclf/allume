@@ -11,5 +11,6 @@
             "email": "michael@estsurinter.net"
         }
     ],
+    "bin": ["bin/allume"],
     "minimum-stability": "stable"
 }
