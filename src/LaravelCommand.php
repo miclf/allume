@@ -39,6 +39,10 @@ class LaravelCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        // Does nothing.
+        // Check if the command is executed from the person’s home directory.
+        if (!@chdir('./code')) {
+           $output->writeln("<error>This has to be executed from the home directory</error>");
+           exit(1);
+        }
     }
 }
