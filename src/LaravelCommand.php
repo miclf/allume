@@ -49,5 +49,8 @@ class LaravelCommand extends Command
         $segments = explode('/', exec('pwd'));
         array_pop($segments);
         $homePath = implode('/', $segments);
+
+        // Get the vendor and the project names from the CLI arguments.
+        list($vendor, $name) = explode('/', $input->getArgument('name'));
     }
 }
