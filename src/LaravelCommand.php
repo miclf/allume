@@ -44,5 +44,10 @@ class LaravelCommand extends Command
            $output->writeln("<error>This has to be executed from the home directory</error>");
            exit(1);
         }
+
+        // Determine the absolute path to this user’s home directory.
+        $segments = explode('/', exec('pwd'));
+        array_pop($segments);
+        $homePath = implode('/', $segments);
     }
 }
