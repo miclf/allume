@@ -52,5 +52,8 @@ class LaravelCommand extends Command
 
         // Get the vendor and the project names from the CLI arguments.
         list($vendor, $name) = explode('/', $input->getArgument('name'));
+
+
+        $helper = $this->getHelper('question');
     }
 }
