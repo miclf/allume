@@ -24,7 +24,7 @@ class LaravelCommand extends Command
             ->addArgument(
                 'name',
                 InputArgument::OPTIONAL,
-                'The name of the project to initialize.',
+                'Name of the project to initialize, formatted as ‘vendor/package’.',
                 'miclf/awesome'
             )
         ;
