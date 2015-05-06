@@ -23,9 +23,8 @@ class LaravelCommand extends Command
             ->setDescription('Initialize a new Laravel project.')
             ->addArgument(
                 'name',
-                InputArgument::OPTIONAL,
-                'Name of the project to initialize, formatted as ‘vendor/package’.',
-                'miclf/awesome'
+                InputArgument::REQUIRED,
+                'Name of the project to initialize, formatted as ‘vendor/package’.'
             )
         ;
     }
