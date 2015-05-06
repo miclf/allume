@@ -4,6 +4,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Question\Question;
 
 /**
  * Initialize a new Laravel project.
@@ -70,7 +71,25 @@ class LaravelCommand extends Command
         // Get the vendor and the project names from the CLI arguments.
         list($vendor, $name) = explode('/', $input->getArgument('name'));
 
+        $license = $this->askForLicense();
+
+    }
+
+    /**
+     * Ask the person which license she wants for the project.
+     *
+     * @return string
+     */
+    protected function askForLicense()
+    {
+        $question = new Question('What is the license? <comment>(CC0-1.0)</comment> ', 'CC0-1.0');
+
+        $licenses = ['AGPL', 'CC0-1.0', 'MIT', 'proprietary'];
+
+        $question->setAutocompleterValues($licenses);
 
         $helper = $this->getHelper('question');
+
+        return $helper->ask($this->input, $this->output, $question);
     }
 }
