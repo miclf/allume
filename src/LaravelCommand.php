@@ -72,6 +72,12 @@ class LaravelCommand extends Command
 
         $license = $this->askForLicense();
 
+        $directory = "./{$name}";
+
+       if (file_exists($directory)) {
+           $output->writeln("<error>Directory {$directory} already exists</error>");
+           exit(2);
+       }
     }
 
     /**
