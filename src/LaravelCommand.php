@@ -78,6 +78,8 @@ class LaravelCommand extends Command
            $output->writeln("<error>Directory {$directory} already exists</error>");
            exit(2);
        }
+
+        $this->createProject($name);
     }
 
     /**
@@ -96,5 +98,28 @@ class LaravelCommand extends Command
         $helper = $this->getHelper('question');
 
         return $helper->ask($this->input, $this->output, $question);
+    }
+
+    /**
+     * Create a new laravel/laravel project using Composer.
+     *
+     * @param string  $name  Name of the project
+     */
+    protected function createProject($name)
+    {
+        $command =
+            'composer create-project'.
+            ' --quiet'.
+            ' --ignore-platform-reqs'.
+            ' --prefer-dist'.
+            ' laravel/laravel '.
+            ' '.escapeshellarg($name);
+
+        $this->output->writeln(
+            "- <info>Creating project</info> in <comment>~/code/{$name}.</comment>".
+            ' It may take a while. Perfect time to prepare some tea.'
+        );
+
+        exec($command);
     }
 }
