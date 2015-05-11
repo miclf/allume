@@ -109,9 +109,22 @@ class LaravelCommand extends Command
     {
         $command =
             'composer create-project'.
+
+            // Do not output any message. Since this command is part of a
+            // bigger process, we don’t want its outpout to pollute
+            // what we’ll generate from this other process.
             ' --quiet'.
+
+            // Ignore platform requirements (php & ext- packages), so that
+            // this tool can also be used from environments that are
+            // not the one that will be used for development.
             ' --ignore-platform-reqs'.
+
+            // Forces installation from package dist.
             ' --prefer-dist'.
+
+            // Command arguments. The new project’s name will be used to
+            // name the directory where the files should be created.
             ' laravel/laravel '.
             ' '.escapeshellarg($name);
 
