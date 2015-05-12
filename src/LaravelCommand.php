@@ -89,7 +89,10 @@ class LaravelCommand extends Command
      */
     protected function askForLicense()
     {
-        $question = new Question('What is the license? <comment>(CC0-1.0)</comment> ', 'CC0-1.0');
+        $question = new Question(
+            '<info>License</info> (default: <comment>CC0-1.0</comment>)<info>:</info> ',
+            'CC0-1.0'
+        );
 
         $licenses = ['AGPL', 'CC0-1.0', 'MIT', 'proprietary'];
 
