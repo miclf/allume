@@ -62,6 +62,12 @@ class LaravelCommand extends Command
            exit(1);
         }
 
+        $helper = $this->getHelper('question');
+
+        $description = $helper->ask($this->input, $this->output, new Question(
+            '<info>Description of the project:</info> ')
+        );
+
         // Determine the absolute path to this user’s home directory.
         $segments = explode('/', exec('pwd'));
         array_pop($segments);
