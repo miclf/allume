@@ -21,11 +21,6 @@ class LaravelCommand extends Command
         $this
             ->setName('laravel')
             ->setDescription('Initialize a new Laravel project.')
-            ->addArgument(
-                'name',
-                InputArgument::REQUIRED,
-                'Name of the project to initialize, formatted as ‘vendor/package’.'
-            )
         ;
     }
 
@@ -64,6 +59,16 @@ class LaravelCommand extends Command
 
         $helper = $this->getHelper('question');
 
+        $vendor = $helper->ask($this->input, $this->output, new Question(
+            '<info>Vendor name</info> (default: <comment>miclf</comment>)<info>:</info> ',
+            'miclf'
+        ));
+
+        $name = $helper->ask($this->input, $this->output, new Question(
+            '<info>Project name</info> (default: <comment>awesome</comment>)<info>:</info> ',
+            'awesome'
+        ));
+
         $description = $helper->ask($this->input, $this->output, new Question(
             '<info>Description of the project:</info> '
         ));
@@ -72,9 +77,6 @@ class LaravelCommand extends Command
         $segments = explode('/', exec('pwd'));
         array_pop($segments);
         $homePath = implode('/', $segments);
-
-        // Get the vendor and the project names from the CLI arguments.
-        list($vendor, $name) = explode('/', $input->getArgument('name'));
 
         $license = $this->askForLicense();
 
