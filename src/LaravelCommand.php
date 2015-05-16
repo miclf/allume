@@ -65,8 +65,8 @@ class LaravelCommand extends Command
         ));
 
         $name = $helper->ask($this->input, $this->output, new Question(
-            '<info>Project name</info> (default: <comment>awesome</comment>)<info>:</info> ',
-            'awesome'
+            '<info>Project name</info> (default: <comment>project</comment>)<info>:</info> ',
+            'project'
         ));
 
         $description = $helper->ask($this->input, $this->output, new Question(
