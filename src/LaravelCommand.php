@@ -114,9 +114,9 @@ class LaravelCommand extends Command
     /**
      * Create a new laravel/laravel project using Composer.
      *
-     * @param string  $name  Name of the project
+     * @param string  $path  Path to the project, relative to the code directory
      */
-    protected function createProject($name)
+    protected function createProject($path)
     {
         $command =
             'composer create-project'.
@@ -134,13 +134,13 @@ class LaravelCommand extends Command
             // Forces installation from package dist.
             ' --prefer-dist'.
 
-            // Command arguments. The new project’s name will be used to
-            // name the directory where the files should be created.
+            // Command arguments. The path of the new project will be used
+            // to make the directory where the files should be created.
             ' laravel/laravel '.
-            ' '.escapeshellarg($name);
+            ' '.escapeshellarg($path);
 
         $this->output->writeln(
-            "- <info>Creating project</info> in <comment>~/code/{$name}.</comment>".
+            "- <info>Creating project</info> in <comment>~/code/{$path}.</comment>".
             ' It may take a while. Perfect time to prepare some tea.'
         );
 
