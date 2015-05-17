@@ -91,6 +91,29 @@ class LaravelCommand extends Command
     }
 
     /**
+     * Ask for something via prompt.
+     *
+     * @param  string  $question
+     * @param  mixed   $defaultAnswer
+     *
+     * @return string  The person’s answer
+     */
+    protected function ask($question, $defaultAnswer = null)
+    {
+        $questionString = "<info>{$question}:</info> ";
+
+        if (!is_null($defaultAnswer)) {
+            $questionString = "<info>{$question} <comment>({$defaultAnswer})</comment>:</info> ";
+        }
+
+        return $this->questionHelper->ask(
+            $this->input,
+            $this->output,
+            new Question($questionString, $defaultAnswer)
+        );
+    }
+
+    /**
      * Ask the person which license she wants for the project.
      *
      * @return string
