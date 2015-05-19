@@ -39,6 +39,13 @@ class LaravelCommand extends Command
     protected $output;
 
     /**
+     * Question helper.
+     *
+     * @var \Symfony\Component\Console\Helper\HelperInterface
+     */
+    protected $questionHelper;
+
+    /**
      * Execute the command.
      *
      * @param  \Symfony\Component\Console\Input\InputInterface    $input
@@ -51,13 +58,14 @@ class LaravelCommand extends Command
         $this->input  = $input;
         $this->output = $output;
 
+        $this->questionHelper = $this->getHelper('question');
+
         // Check if the command is executed from the person’s home directory.
         if (!@chdir('./code')) {
            $output->writeln("<error>This has to be executed from the home directory</error>");
            exit(1);
         }
 
-        $helper = $this->getHelper('question');
 
         $vendor = $helper->ask($this->input, $this->output, new Question(
             '<info>Vendor name</info> (default: <comment>miclf</comment>)<info>:</info> ',
