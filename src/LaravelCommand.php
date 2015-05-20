@@ -66,20 +66,12 @@ class LaravelCommand extends Command
            exit(1);
         }
 
+        $vendor = $this->ask('Vendor name', 'miclf');
+        $name   = $this->ask('Project name', 'project');
 
-        $vendor = $helper->ask($this->input, $this->output, new Question(
-            '<info>Vendor name</info> (default: <comment>miclf</comment>)<info>:</info> ',
-            'miclf'
-        ));
 
-        $name = $helper->ask($this->input, $this->output, new Question(
-            '<info>Project name</info> (default: <comment>project</comment>)<info>:</info> ',
-            'project'
-        ));
 
-        $description = $helper->ask($this->input, $this->output, new Question(
-            '<info>Description of the project:</info> '
-        ));
+        $description = $this->ask('Description of the project');
 
         // Determine the absolute path to this user’s home directory.
         $segments = explode('/', exec('pwd'));
