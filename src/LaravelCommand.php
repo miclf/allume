@@ -69,8 +69,10 @@ class LaravelCommand extends Command
         $vendor = $this->ask('Vendor name', 'miclf');
         $name   = $this->ask('Project name', 'project');
 
+        $defaultPath = $name;
 
 
+        $path        = $this->ask('Directory', $defaultPath);
         $description = $this->ask('Description of the project');
 
         // Determine the absolute path to this user’s home directory.
