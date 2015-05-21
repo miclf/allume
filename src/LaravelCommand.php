@@ -71,6 +71,9 @@ class LaravelCommand extends Command
 
         $defaultPath = $name;
 
+        if (file_exists('./'.$defaultPath)) {
+            $defaultPath .= '-2';
+        }
 
         $path        = $this->ask('Directory', $defaultPath);
         $description = $this->ask('Description of the project');
