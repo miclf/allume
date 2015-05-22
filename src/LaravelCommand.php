@@ -126,7 +126,7 @@ class LaravelCommand extends Command
     protected function askForLicense()
     {
         $question = new Question(
-            '<info>License</info> (default: <comment>CC0-1.0</comment>)<info>:</info> ',
+            '<info>License</info> <comment>(CC0-1.0)</comment><info>:</info> ',
             'CC0-1.0'
         );
 
