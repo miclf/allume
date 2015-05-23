@@ -85,9 +85,9 @@ class LaravelCommand extends Command
 
         $license = $this->askForLicense();
 
+        $this->createProject($path);
 
 
-        $this->createProject($name);
     }
 
     /**
