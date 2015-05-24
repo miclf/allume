@@ -88,6 +88,7 @@ class LaravelCommand extends Command
         $this->createProject($path);
 
 
+        $package = json_decode(file_get_contents("{$path}/composer.json"));
     }
 
     /**
