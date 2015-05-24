@@ -78,6 +78,9 @@ class LaravelCommand extends Command
         $path        = $this->ask('Directory', $defaultPath);
         $description = $this->ask('Description of the project');
 
+        $pkgAuthorName  = $this->ask('Author name', 'Michaël Lecerf');
+        $pkgAuthorEmail = $this->ask('Author e-mail', 'michael@estsurinter.net');
+
         // Determine the absolute path to this user’s home directory.
         $segments = explode('/', exec('pwd'));
         array_pop($segments);
