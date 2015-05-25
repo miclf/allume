@@ -92,6 +92,30 @@ class LaravelCommand extends Command
 
 
         $package = json_decode(file_get_contents("{$path}/composer.json"));
+
+        // Remove some data.
+        unset($package->keywords);
+
+        // Update some data.
+        $package->name = $vendor.'/'.$name;
+        $package->license = $license;
+
+        // Update the description or remove the default one.
+        if ($description) {
+            $package->description = $description;
+        } else {
+            unset($package->description);
+        }
+
+        // Add some data.
+        if ($pkgAuthorName && $pkgAuthorEmail) {
+            $package->authors = [
+                [
+                    'name'  => $pkgAuthorName,
+                    'email' => $pkgAuthorEmail
+                ]
+            ];
+        }
     }
 
     /**
