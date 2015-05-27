@@ -90,6 +90,7 @@ class LaravelCommand extends Command
 
         $this->createProject($path);
 
+        $output->writeln("- <info>Updating</info> <comment>composer.json</comment> metadata");
 
         $package = json_decode(file_get_contents("{$path}/composer.json"));
 
