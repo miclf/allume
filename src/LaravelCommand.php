@@ -117,6 +117,10 @@ class LaravelCommand extends Command
                 ]
             ];
         }
+
+        // Reencode everything to JSON.
+        $options = JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE;
+        $json = json_encode($package, $options);
     }
 
     /**
